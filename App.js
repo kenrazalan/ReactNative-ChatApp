@@ -1,24 +1,56 @@
-import { StatusBar } from 'expo-status-bar';
-import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
 import 'react-native-gesture-handler';
+import * as React from 'react';
+import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
-import {createStackNavigator} from '@react-navigation/stack'
+import {createStackNavigator} from '@react-navigation/stack';
 import Login from './screens/Login';
+import Register from './screens/Register';
+import {StatusBar} from 'expo-status-bar'
+
 
 const Stack = createStackNavigator();
-const globalScreenOption = {
+const globalScreenOptions = {
+  // gestureEnabled: true,
+  // gestureDirection: "horizontal",
+  // gestureResponseDistance:{
+  //   horizontal: 300
+  // },
+  // cardStyleInterpolator: ({ current, next, layouts }) => {
+  //   return {
+  //     cardStyle: {
+  //       transform: [
+  //         {
+  //           translateX: current.progress.interpolate({
+  //             inputRange: [0, 1],
+  //             outputRange: [layouts.screen.width, 0],
+  //           }),
+  //         },
+  //       ],
+  //     },
+  //     overlayStyle: {
+  //       opacity: current.progress.interpolate({
+  //         inputRange: [0, 1],
+  //         outputRange: [0, 0.5],
+  //       }),
+  //     },
+  //   };
+  // },
+  headerBackTitleVisible: true,
   headerStyle: {backgroundColor:"red"},
   headerTitleAlign:"center",
   headerTitleStyle: {color: "white"},
-  headerTintColor: {color: "white"},
+  headerTintColor:"#fff",
 }
 
 export default function App() {
   return (
+
+
     <NavigationContainer>
-      <Stack.Navigator screenOptions={globalScreenOption}>
-      <Stack.Screen name="Login" component={Login}/>
+         {/* <StatusBar backgroundColor="#00000000" style="light"/> */}
+      <Stack.Navigator  screenOptions={globalScreenOptions}>
+        <Stack.Screen name="Login" component={Login}/>
+        <Stack.Screen name="Register" component={Register}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
