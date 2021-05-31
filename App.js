@@ -7,6 +7,7 @@ import Login from './screens/Login';
 import Register from './screens/Register';
 import {StatusBar} from 'expo-status-bar'
 import Home from './screens/Home';
+import NewChat from './screens/NewChat';
 
 
 const Stack = createStackNavigator();
@@ -53,6 +54,7 @@ export default function App() {
         <Stack.Screen name="Login" component={Login}/>
         <Stack.Screen name="Register" component={Register}/>
         <Stack.Screen name="Home" component={Home}/>
+        <Stack.Screen name="NewChat" component={NewChat}/>
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -30,7 +30,7 @@ const Register = ({navigation}) => {
     return (
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
 
-            <Text h3 >Create Accoun</Text>
+            <Text h3 >Create Account</Text>
         <View style={styles.input}>
             <Input 
                 placeholder="Full Name" 
