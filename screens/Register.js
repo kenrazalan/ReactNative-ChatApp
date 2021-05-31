@@ -3,6 +3,7 @@ import { KeyboardAvoidingView } from 'react-native'
 import { StyleSheet, View } from 'react-native'
 import {StatusBar} from 'expo-status-bar'
 import {Button,Input,Text} from 'react-native-elements'
+import { auth } from '../firebase'
 
 const Register = ({navigation}) => {
     const [name,setName] = useState('')
@@ -17,7 +18,14 @@ const Register = ({navigation}) => {
     },[navigation])
 
     const register = () =>{
-
+        auth.createUserWithEmailAndPassword(email,password)
+        .then(user => {
+            user.user.updateProfile({
+                displayName: name,
+                photoURL: image || `https://image.shutterstock.com/image-photo/man-hiking-sunset-mountains-heavy-600w-723981925.jpg`
+            })
+        })
+        .catch(error => alert(error))
     }
     return (
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
