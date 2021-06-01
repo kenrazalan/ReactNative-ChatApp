@@ -20,7 +20,15 @@ const Chat = ({navigation,route}) => {
             headerTitleAlign : "left",
             headerTitle : () => (
                 <View  style={styles.title}>
-                    <Avatar rounded source={{uri: "https://p.kindpng.com/picc/s/78-785827_user-profile-avatar-login-account-male-user-icon.png"}}/>
+                    <Avatar
+                        rounded 
+                        source={{
+                            uri: 
+                            messages[messages.length - 1]?.data.image ||
+                            "https://p.kindpng.com/picc/s/78-785827_user-profile-avatar-login-account-male-user-icon.png"
+                           
+                            
+                            }}/>
                     <Text style={styles.chatNameHeader}>{route.params.chatName}</Text>
                 </View>
             ),
@@ -40,10 +48,9 @@ const Chat = ({navigation,route}) => {
                 </View>
             )
         })
-    },[navigation])
+    },[navigation,messages])
 
     useLayoutEffect(()=>{
-        
         const unsubscribe = db.collection("chats")
         .doc(route.params.id)
         .collection('messages')
@@ -83,7 +90,7 @@ const Chat = ({navigation,route}) => {
                 keyboardVerticalOffset={90}>
                 <TouchableWithoutFeedback>
                     <>
-                    <ScrollView>
+                    <ScrollView contentContainerStyle={{padding: 10}}>
                         {messages.map(({data,id}) => (
                             data.email === auth.currentUser.email ? (
                                 <View key={id} style={styles.reciever}>
@@ -97,14 +104,28 @@ const Chat = ({navigation,route}) => {
                                         right={-5}
                                         bottom={-15} 
                                         position="absolute" 
-                                        size={30} source={{
+                                        size={30} 
+                                        source={{
                                             uri: data.image
                                         }} />
                                     <Text style={styles.recieverChat}>{data.message}</Text>
                                 </View>
                             ): (
                                 <View style={styles.sender}>
-                                    <Avatar />
+                                    <Avatar 
+                                        rounded 
+                                        //Web
+                                        containerStyle={{ 
+                                        left:-5,
+                                        bottom:-15 ,
+                                        position:"absolute" }}
+                                        right={-5}
+                                        bottom={-15} 
+                                        position="absolute" 
+                                        size={30} 
+                                        source={{
+                                            uri: data.image
+                                        }} />
                                     <Text style={styles.senderChat}>{data.message}</Text>
                                 </View>
                             )
