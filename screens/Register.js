@@ -4,6 +4,8 @@ import { StyleSheet, View } from 'react-native'
 import {StatusBar} from 'expo-status-bar'
 import {Button,Input,Text} from 'react-native-elements'
 import { auth } from '../firebase'
+import { TouchableOpacity } from 'react-native'
+import { AntDesign } from '@expo/vector-icons';
 
 const Register = ({navigation}) => {
     const [name,setName] = useState('')
@@ -13,7 +15,12 @@ const Register = ({navigation}) => {
 
     useLayoutEffect(()=>{
         navigation.setOptions({
-            headerBackTitle: "Login"
+            headerBackTitle: "Login",
+            headerLeft: () => (
+                <TouchableOpacity style={styles.backBtn} onPress={() => navigation.goBack()}>
+                    <AntDesign name="arrowleft" size={24}/>
+                </TouchableOpacity>
+            )
         })
     },[navigation])
 
@@ -80,6 +87,12 @@ const styles = StyleSheet.create({
     button: {
         width: 200,
         marginTop: 10,
+
+    },
+    backBtn: {
+        padding: 10,
+        width: 50,
+        //backgroundColor: "red"
 
     }
 })
