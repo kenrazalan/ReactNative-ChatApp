@@ -8,6 +8,7 @@ import Register from './screens/Register';
 import {StatusBar} from 'expo-status-bar'
 import Home from './screens/Home';
 import NewChat from './screens/NewChat';
+import Chat from './screens/Chat';
 
 
 const Stack = createStackNavigator();
@@ -38,10 +39,10 @@ const globalScreenOptions = {
   //   };
   // },
   headerBackTitleVisible: true,
-  headerStyle: {backgroundColor:"red"},
+  headerStyle: {backgroundColor:"white"},
   headerTitleAlign:"center",
-  headerTitleStyle: {color: "white"},
-  headerTintColor:"#fff",
+  headerTitleStyle: {color: "black"},
+  headerTintColor:"black",
 }
 
 export default function App() {
@@ -55,6 +56,7 @@ export default function App() {
         <Stack.Screen name="Register" component={Register}/>
         <Stack.Screen name="Home" component={Home}/>
         <Stack.Screen name="NewChat" component={NewChat}/>
+        <Stack.Screen name="Chat" component={Chat}/>
       </Stack.Navigator>
     </NavigationContainer>
   );
