@@ -10,9 +10,6 @@ const NewChat = ({navigation}) => {
     useLayoutEffect(()=>{
         navigation.setOptions({
             title: "New Chat",
-             headerStyle:{ backgroundColor: "white" },
-             headerTitleStyle: {color: "black"},
-             headerTintColor: "black",
              headerBackTitleVisible: false,
         })
     },[navigation])
