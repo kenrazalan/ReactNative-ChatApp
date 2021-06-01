@@ -25,9 +25,6 @@ const Home = ({navigation}) => {
     useLayoutEffect(()=>{
         navigation.setOptions({
             title: "Chat App",
-            headerStyle:{ backgroundColor: "white" },
-            headerTitleStyle: {color: "black"},
-            headerTintColor: {color: "black"},
             headerLeft: () =>(
             <View style={styles.headerLeftIcon}>
                 <TouchableOpacity onPress={signOut}>
@@ -58,12 +55,14 @@ const Home = ({navigation}) => {
             navigation.replace("Login")
         })
     }
-   
+    const openChat = (id,chatName) =>{
+        navigation.navigate("Chat",{id,chatName})
+    }
     return (
         <SafeAreaView>
             <ScrollView style={styles.container}>
                 {chats.map(({id,data: {chatName}})=>(
-                    <CustomListItem key={id} id={id} chatName={chatName} />
+                    <CustomListItem key={id} id={id} chatName={chatName} openChat={openChat}/>
                ) )}
             </ScrollView>
         </SafeAreaView>
