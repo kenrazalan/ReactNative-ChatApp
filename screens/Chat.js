@@ -111,7 +111,7 @@ const Chat = ({navigation,route}) => {
                                     <Text style={styles.recieverChat}>{data.message}</Text>
                                 </View>
                             ): (
-                                <View style={styles.sender}>
+                                <View key={id} style={styles.sender}>
                                     <Avatar 
                                         rounded 
                                         //Web
