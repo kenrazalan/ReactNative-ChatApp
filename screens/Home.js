@@ -11,7 +11,8 @@ const Home = ({navigation}) => {
     const [chats,setChats] = useState([])
 
     useEffect(()=>{
-        const unsubscribe = db.collection('chats').onSnapshot(snapshot =>{
+        const unsubscribe = db.collection('chats')
+            .onSnapshot(snapshot =>{
             setChats(snapshot.docs.map(doc => (
                 {
                     id: doc.id,
