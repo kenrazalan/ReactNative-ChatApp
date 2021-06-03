@@ -3,6 +3,7 @@ import { StyleSheet, Text, View,KeyboardAvoidingView } from 'react-native'
 import {Button,Input,Image} from 'react-native-elements'
 import {StatusBar} from 'expo-status-bar'
 import { auth } from '../firebase'
+import chat from '../assets/chat.png'
 
 
 const Login = ({navigation}) => {
@@ -25,9 +26,7 @@ const Login = ({navigation}) => {
     return (
         <KeyboardAvoidingView behavior="padding" style={styles.container}>
            
-            <Image source={{
-                uri: "https://image.shutterstock.com/image-photo/man-hiking-sunset-mountains-heavy-600w-723981925.jpg"
-            }}
+            <Image source={chat}
             style={styles.image} />
             <View style={styles.input}>
                 <Input 
